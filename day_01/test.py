@@ -5,15 +5,20 @@ from solution import *
 
 
 class TestChallenge(unittest.TestCase):
-
-    def test_first_challenge(self):
+    def setUp(self):
         file_path = path.abspath(__file__)
         dir_path = path.dirname(file_path)
-        test_file_path = path.join(dir_path,'test_input.txt')
+        self.test_file_path = path.join(dir_path,'test_input.txt')
 
+    def test_first_challenge(self):
         expected = 24000
+        actual = solve_challenge(self.test_file_path)
 
-        actual = solve_challenge(test_file_path)
+        self.assertEqual(actual, expected)
+
+    def test_second_challenge(self):
+        expected = 45000
+        actual = solve_second_challenge(self.test_file_path)
 
         self.assertEqual(actual, expected)
 
