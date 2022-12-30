@@ -1,7 +1,7 @@
 import sys
 from os import path
 
-TOP_N_ELVES = 3
+from constants import TOP_N_ELVES
 
 
 def solve_challenge(filepath):
