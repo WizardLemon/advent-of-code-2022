@@ -1,7 +1,7 @@
 import unittest
 from os import path
 
-from solution import *
+from .solution import *
 
 
 class TestChallenge(unittest.TestCase):
