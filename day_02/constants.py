@@ -15,6 +15,12 @@ rps_dictionary = {
     'Z': SCISSORS
 }
 
+encoded_result_dictionary = {
+    'X': LOSS,
+    'Y': DRAW,
+    'Z': WIN
+}
+
 result_score_table = {
     LOSS: 0,
     DRAW: 3,
@@ -34,6 +40,7 @@ class Rock:
 
         if isinstance(shape, Scissors):
             return WIN
+
 
     def __init__(self):
         self.points = 1
@@ -55,6 +62,7 @@ class Paper:
         if isinstance(shape, Scissors):
             return LOSS
 
+
     def __init__(self):
         self.points = 2
 
@@ -75,8 +83,12 @@ class Scissors:
         if isinstance(shape, Scissors):
             return DRAW
 
+
     def __init__(self):
         self.points = 3
 
     def __str__(self):
         return SCISSORS
+
+
+shape_class_list = [Rock, Paper, Scissors]

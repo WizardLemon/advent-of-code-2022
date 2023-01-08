@@ -16,6 +16,12 @@ class TestChallenge(unittest.TestCase):
 
         self.assertEqual(actual, expected)
 
+    def test_second_challenge(self):
+        expected = 12
+        actual = solve_second_challenge(self.test_file_path)
+
+        self.assertEqual(actual, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
