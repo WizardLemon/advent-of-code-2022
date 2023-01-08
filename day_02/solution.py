@@ -1,0 +1,64 @@
+import sys
+from os import path
+
+from constants import *
+
+
+def solve_challenge(filepath):
+    with open(filepath, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+        score = calculate_score(lines)
+
+        return score
+
+
+def calculate_score(lines):
+    total_score = 0
+
+    for line in lines:
+        opposing_encoded_shape = line[0]
+        my_encoded_shape = line[2]
+
+        my_shape = get_shape_from_encoded(my_encoded_shape)
+        opposing_shape = get_shape_from_encoded(opposing_encoded_shape)
+
+        outcome = get_outcome(my_shape, opposing_shape)
+        outcome_points = result_score_table[outcome]
+
+        total_score += my_shape.POINTS
+        total_score += outcome_points
+
+    return total_score
+
+
+
+def get_shape_from_encoded(encoded_shape):
+    decoded_shape = rps_dictionary[encoded_shape]
+
+    if decoded_shape == ROCK:
+        return Rock()
+
+    if decoded_shape == PAPER:
+        return Paper()
+
+    if decoded_shape == SCISSORS:
+        return Scissors()
+
+def get_outcome(my_shape, opposing_shape):
+    return my_shape.against(opposing_shape)
+
+
+if __name__ == '__main__':
+    filename = sys.argv[2]
+    file_path = path.abspath(__file__)
+    dir_path = path.dirname(file_path)
+    full_file_path = path.join(dir_path, filename)
+
+    challenge_part = int(sys.argv[1])
+
+    result = None
+
+    if challenge_part == 1:
+        result = solve_challenge(full_file_path)
+
+    print(result)
